@@ -1,0 +1,19 @@
+#Python Code for for preprocessing Ge'ez character
+##Printing a unicode character with thier code
+###unicode_string = "\u2665\u00C4\u00C6" # output= ♥ÄÆ
+----
+##### This python code removes punctuations, non Geez and special characters ######
+"""Lowercase, trim, and remove non-letter characters (from pytorch)"""
+def normalizeString(s):
+    #s = re.sub(r"።(?=\u1200-\u137c)", r"", s) #right
+    s = re.sub(r"\s(?=።)", r"", s)
+    s = re.sub(r"([.!?፣፤፥፡።])", r"", s)
+    s = re.sub(r"[^\u1200-\u137c\s\d]", r"", s)
+    return s 
+
+#unicode_string = "\u1200-\u137c"
+#print(unicode_string)
+print(normalizeString(f"the quotation ወገብረ እግዚአብሔር ለአዳም ወለብእሲቱ አዕዳለ ዘማእስ ወአልበሶሙ from bible፻፲፱ 119። "))
+print(normalizeString(f" ።	ከእርሱም ፈቀቅ አለ። የዚያን ጊዜ። ስለI'm !!To 2334 he's  እግዚአብሔርም ። you re  avoid!!! t!!! his error, make sure your .tloook.: ."))
+print(normalizeString(f"እ1234ግዚአብሔርም ። ብ!!ርሃን ይሁን፣፤፥፡ ኣ?ለ፤ ብርሃን456ም!! ሆነ ። ወኮነ ብርሃን ።  እንt56ደ ሆነ፣፤፥፡ አየ፤ እግዚብሔርም ብርሃንንና ወማ ። "))
+print(normalizeString(f" ወማ ። ፻፲፱ ። መላጣI'm !!To 2334 he's  እግዚአብሔርም ። you re  avoid!!! t!!! his error, make sure your .tloook.: ."))
